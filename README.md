@@ -1,5 +1,4 @@
-GTA-API
-=======
+GTA:SA AUTOHOTKEY API:
 
-Eine GTA SA:MP API für Keybinder.
-www.gta-api.de
+
+(Updated + translated from german)
