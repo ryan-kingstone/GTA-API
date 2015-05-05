@@ -11,9 +11,9 @@
 
 #pragma once
 
-#define API_VERSION "1.0.0 RC2-PR1"
-#define UPDATE_SERVER_ADDR "update.gta-api.de"
-#define NEXT_UPDATE_CHECK 300000
+#define API_VERSION "0.3.7 RC2 -pre"
+#define UPDATE_SERVER_ADDR "fk.you"
+#define NEXT_UPDATE_CHECK 99999999
 
 class Utilities {
 public:

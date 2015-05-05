@@ -36,6 +36,8 @@ extern "C" __declspec(dllimport) int IsInChat();
 extern "C" __declspec(dllimport) int GetPlayerMoney();
 extern "C" __declspec(dllimport) int GetPlayerHealth();
 extern "C" __declspec(dllimport) int GetPlayerArmour();
+extern "C" __declspec(dllimport) int GetPlayerAngle();
+extern "C" __declspec(dllimport) int GetPlayerAngleEx(char*&);
 extern "C" __declspec(dllimport) int GetPlayerPos(float &x, float &y, float &z);
 extern "C" __declspec(dllimport) int GetPlayerPosX(float &x);
 extern "C" __declspec(dllimport) int GetPlayerPosY(float &y);

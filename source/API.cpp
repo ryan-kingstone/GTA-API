@@ -31,7 +31,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 	if (fdwReason == DLL_PROCESS_ATTACH) {
 		// fill array
 		for (int i = 0; i < MAX_PLAYERS; i++) {
-			memcpy(_PlayerDatas[i]._PlayerData_Name, "Unbekannt", 9);
+			memcpy(_PlayerDatas[i]._PlayerData_Name, "Unknown!", 9);
 			_PlayerDatas[i]._PlayerData_Score = 0;
 			_PlayerDatas[i]._PlayerData_Ping = 0;
 		}
@@ -138,6 +138,14 @@ int GetPlayerArmour() {
 	return _GTASA.API_GetPlayerArmour();
 }
 
+int GetPlayerAngle() {
+	return _GTASA.API_GetPlayerAngle();
+}
+
+int GetPlayerAngleEx(char *&var) {
+	return _GTASA.API_GetPlayerAngle();
+}
+
 int GetPlayerPos(float &x, float &y, float &z) {
 	return _GTASA.API_GetPlayerPos(x, y, z);
 }
@@ -152,6 +160,10 @@ int GetPlayerPosY(float &y) {
 
 int GetPlayerPosZ(float &z) {
 	return _GTASA.API_GetPlayerPosZ(z);
+}
+
+int GetPlayerPosA(float &a) {
+	return _GTASA.API_GetPlayerPosZ(a);
 }
 
 int IsPlayerInAnyInterior() {

@@ -17,6 +17,7 @@
 #define GTA_PLAYER_MONEY 0xB7CE50
 #define GTA_PLAYER_HEALTH_ADDR 0x540
 #define GTA_PLAYER_ARMOUR_ADDR 0x548
+#define GTA_PLAYER_ANGLE_ADDR 0x558
 #define GTA_PLAYER_POS_X 0xB6F2E4
 #define GTA_PLAYER_POS_Y 0xB6F2E8
 #define GTA_PLAYER_POS_Z 0xB6F2EC
@@ -43,6 +44,8 @@ public:
 	int API_GetPlayerMoney();
 	int API_GetPlayerHealth();
 	int API_GetPlayerArmour();
+	int API_GetPlayerAngle();
+	int API_GetPlayerAngleEx(char*&);
 	int API_GetPlayerPos(float&, float&, float&);
 	int API_GetPlayerPosX(float&);
 	int API_GetPlayerPosY(float&);

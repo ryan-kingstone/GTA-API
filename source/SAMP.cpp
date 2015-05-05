@@ -33,7 +33,7 @@ struct PlayerDatas _PlayerDatas[MAX_PLAYERS];
  * @params			servername			char*&
  */
 int SAMP::API_GetServerName(char *&servername) {
-	char name[MAX_SERVERNAME_LENGTH] = { "Unbekannt" };
+	char name[MAX_SERVERNAME_LENGTH] = { "Unknown" };
 
 	if (_Memory.CheckHandles() == 1) {
 		DWORD buffer;
@@ -140,7 +140,7 @@ int SAMP::API_ReadScoreboard() {
 
 		while (index < 1000) {
 			if (LocalPlayerID != index) {
-				memcpy(_PlayerDatas[index]._PlayerData_Name, "Unbekannt", 9);
+				memcpy(_PlayerDatas[index]._PlayerData_Name, "Unknown!", 9);
 				_PlayerDatas[index]._PlayerData_Score = -1;
 				_PlayerDatas[index]._PlayerData_Ping = -1;
 
@@ -188,7 +188,7 @@ int SAMP::API_ReadScoreboard() {
  */
 int SAMP::API_UpdateLocalPlayerInfo() {
 	if (_Memory.CheckHandles() == 1) {
-		char playername[MAX_PLAYER_NAME] = { "Unbekannt" };
+		char playername[MAX_PLAYER_NAME] = { "Unknown!" };
 		int playernameLength = 0;
 		short playerid = -1;
 		int score = -1;

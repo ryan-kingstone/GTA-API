@@ -78,6 +78,8 @@ int GTASA::API_GetPlayerHealth() {
 	return _Memory.CheckHandlesErrorCode;
 }
 
+
+
 /**
  * int API_GetPlayerArmour()
  *
@@ -92,6 +94,45 @@ int GTASA::API_GetPlayerArmour() {
 
 		_Memory.Read((DWORD*)(GTASA::API_GetCPEDPointer() + GTA_PLAYER_ARMOUR_ADDR), &armour, sizeof(armour));
 		return (int)armour;
+	}
+
+	return _Memory.CheckHandlesErrorCode;
+}
+
+
+/**
+* int API_GetPlayerAngle()
+*
+* @author			Kingstone
+* @date			2015-03-23
+* @category		GTA
+* @license			General Public License <https://www.gnu.org/licenses/gpl>
+*/
+int GTASA::API_GetPlayerAngle() {
+	if (_Memory.CheckHandles() == 1) {
+		float angle;
+
+		_Memory.Read((DWORD*)(GTASA::API_GetCPEDPointer() + GTA_PLAYER_ANGLE_ADDR), &angle, sizeof(angle));
+		return (int)angle;
+	}
+
+	return _Memory.CheckHandlesErrorCode;
+}
+
+/**
+* int API_GetPlayerAngleEx()
+*
+* @author			Kingstone
+* @date			2015-03-23
+* @category		GTA
+* @license			General Public License <https://www.gnu.org/licenses/gpl>
+*/
+int GTASA::API_GetPlayerAngleEx(char*& var) {
+	if (_Memory.CheckHandles() == 1) {
+		float angle;
+
+		_Memory.Read((DWORD*)(GTASA::API_GetCPEDPointer() + GTA_PLAYER_ANGLE_ADDR), &angle, sizeof(angle));
+		return (int)angle;
 	}
 
 	return _Memory.CheckHandlesErrorCode;
@@ -362,7 +403,7 @@ int GTASA::API_GetCityName(char*& cityname) {
 			}
 		}
 
-		memcpy(cityname, "Unbekannt", 9);
+		memcpy(cityname, "INVALID_CITY", 9);
 		return 0;
 	}
 
@@ -389,7 +430,7 @@ int GTASA::API_GetZoneName(char*& zonename) {
 			}
 		}
 
-		memcpy(zonename, "Unbekannt", 9);
+		memcpy(zonename, "INVALID_ZONE", 9);
 		return 0;
 	}
 
