@@ -3,9 +3,10 @@
      
 hModule := DllCall("LoadLibrary", Str, A_ScriptDir . "\API.dll")
 if (hModule == -1 || hModule == 0) {
-	MsgBox, 16, API Fehler, Die API.dll konnte nicht gefunden werden.
+	MsgBox, 16, API Fehler, Unable to find api.dll
     ExitApp
 }
+
 
 ; SA:MP
 GetServerName_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetServerName")
@@ -16,7 +17,6 @@ GetPlayerID_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerID")
 GetPlayerScore_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerScore")
 GetPlayerPing_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerPing_func")
 IsPlayerConnected_func := DllCall("GetProcAddress", UInt, hModule, Str, "IsPlayerConnected")
-GetPlayerIDByName_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerIDByName")
 GetPlayerNameByID_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerNameByID")
 GetPlayerScoreByID_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerScoreByID")
 GetPlayerPingByID_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerPingByID")
@@ -32,6 +32,8 @@ IsInChat_func := DllCall("GetProcAddress", UInt, hModule, Str, "IsInChat")
 GetPlayerMoney_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerMoney")
 GetPlayerHealth_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerHealth")
 GetPlayerArmour_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerArmour")
+GetPlayerAngle_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerAngle")
+GetPlayerAngleEx_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerAngleEx")
 GetPlayerPos_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerPos")
 GetPlayerPosX_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerPosX")
 GetPlayerPosY_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetPlayerPosY")
@@ -125,13 +127,6 @@ IsPlayerConnected(playerid) {
     return Result
 }
 
-GetPlayerIDByName(ByRef name) {
-	global GetPlayerIDByName_func
-	VarSetCapacity(name, 24)
-    Result := DllCall(GetPlayerIDByName_func, StrP, name)
-    return Result
-}
-
 GetPlayerNameByID(playerid, ByRef name) {
 	global GetPlayerNameByID_func
 	VarSetCapacity(name, 24)
@@ -212,7 +207,19 @@ GetPlayerArmour() {
 	Result := DllCall(GetPlayerArmour_func)
 	return Result
 }
-     
+
+GetPlayerAngle() {
+	global GetPlayerAngle_func
+	Result := DllCall(GetPlayerAngle_func)
+	return Result
+}
+
+GetPlayerAngleEx(ByRef var) {
+	global GetPlayerAngleEx_func
+	Result := DllCall(GetPlayerAngleEx_func)
+	return Result
+}
+
 GetPlayerPos(ByRef x, ByRef y, ByRef z) {
 	global GetPlayerPos_func
 	Result := DllCall(GetPlayerPos_func, FloatP, x, FloatP, y, FloatP, z)
