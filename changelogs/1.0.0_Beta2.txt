@@ -1,2 +1,0 @@
-Erledigt:
-- API_IsInChat() wurde hinzugefügt

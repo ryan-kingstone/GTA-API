@@ -3,7 +3,7 @@
      
 hModule := DllCall("LoadLibrary", Str, A_ScriptDir . "\API.dll")
 if (hModule == -1 || hModule == 0) {
-	MsgBox, 16, API Fehler, Unable to find api.dll
+	MsgBox, 16, API Error, Unable to find api.dll
     ExitApp
 }
 
@@ -70,8 +70,6 @@ SetInterfaceMoneyColor_func := DllCall("GetProcAddress", UInt, hModule, Str, "Se
 SetInterfaceWantedLevelColor_func := DllCall("GetProcAddress", UInt, hModule, Str, "SetInterfaceWantedLevelColor")
 
 ; Randomshit
-IsAPIUpdateAvailable_func := DllCall("GetProcAddress", UInt, hModule, Str, "IsAPIUpdateAvailable")
-GetAPIVersion_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetAPIVersion")
 GetTimestamp_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetTimestamp")
 GetAPIRuntime_func := DllCall("GetProcAddress", UInt, hModule, Str, "GetAPIRuntime")
 
@@ -417,19 +415,6 @@ SetInterfaceWantedLevelColor(color) {
 }
 
 ; Utilities
-IsAPIUpdateAvailable() {
-	global IsAPIUpdateAvailable_func
-    Result := DllCall(IsAPIUpdateAvailable_func)
-    return Result
-}
-
-GetAPIVersion(ByRef version) {
-	global GetAPIVersion_func
-	VarSetCapacity(version, 15)
-    Result := DllCall(GetAPIVersion_func, StrP, version)
-    return Result
-}
-
 GetTimestamp() {
 	global GetTimestamp_func
     Result := DllCall(GetTimestamp_func)

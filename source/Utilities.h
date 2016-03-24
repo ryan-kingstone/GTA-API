@@ -11,16 +11,11 @@
 
 #pragma once
 
-#define API_VERSION "0.3.7 RC2 -pre"
-#define UPDATE_SERVER_ADDR "fk.you"
-#define NEXT_UPDATE_CHECK 99999999
+#define API_VERSION "0.3.7"
 
 class Utilities {
 public:
-	int lastUpdateCheck = 0;
-	int updateAvailable = 0;
 
-	int API_IsAPIUpdateAvailable();
 	int API_GetAPIVersion(char *&version);
 	int API_GetTimestamp();
 	int API_GetAPIRuntime();

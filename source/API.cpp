@@ -275,11 +275,6 @@ int SetInterfaceWantedLevelColor(int color) {
 	return _Interface.API_SetInterfaceWantedLevelColor(color);
 }
 
-// Utilities
-int IsAPIUpdateAvailable() {
-	return _Utilities.API_IsAPIUpdateAvailable();
-}
-
 int GetAPIVersion(char *&version) {
 	return _Utilities.API_GetAPIVersion(version);
 }
